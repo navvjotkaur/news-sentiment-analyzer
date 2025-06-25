@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trending Topics</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 30px;
+        background: #f9f9f9;
+    }
+    h1 {
+        text-align: center;
+        color: #222;
+        font-size: 30px;
+    }
+    .topic {
+        background: white;
+        padding: 30px;
+        margin: 20px auto;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 800px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .topic h2 {
+        color: #007bff;
+        font-size: 26px;
+        margin-bottom: 15px;
+    }
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    li {
+        font-size: 22px;
+        padding: 10px 0;
+    }
+    img {
+        display: block;
+        max-width: 100%;
+        margin: 40px auto;
+        border-radius: 10px;
+    }
+
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 28px;
+        }
+        .topic h2 {
+            font-size: 24px;
+        }
+        li {
+            font-size: 20px;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <h1>🔥 Trending Topics (via LDA)</h1>
+    {% for topic in topics %}
+    <div class="topic">
+        <h2>Topic {{ loop.index }}</h2>
+        <ul>
+            {% for word in topic %}
+            <li>🔹 {{ word }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🧠 News Sentiment Analyzer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: #f9f9f9;
+        padding: 20px;
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 24px;
+        color: #222;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    p {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .nav a {
+        text-decoration: none;
+        background: #eee;
+        padding: 10px 16px;
+        border-radius: 25px;
+        font-weight: bold;
+        color: #333;
+        transition: 0.2s;
+    }
+
+    .nav a.active {
+        background-color: #007bff;
+        color: white;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+        font-size: 16px;
+    }
+
+    th {
+        background-color: #f5f5f5;
+    }
+
+    @media (max-width: 600px) {
+        th, td {
+            font-size: 14px;
+            padding: 10px 12px;
+        }
+
+        .nav {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav a {
+            width: 80%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+
+        table {
+            font-size: 14px;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <h1>🧠 News Sentiment Analyzer & Trend Predictor</h1>
+    <img src="data:image/png;base64,{{ plot_image | b64encode }}" alt="Bar chart displaying sentiment analysis results for news headlines with positive, negative, and neutral categories labeled on the x axis and corresponding counts on the y axis. The chart appears in a clean, modern interface designed for news sentiment analysis and trend prediction. No additional text is present in the image. The tone is analytical and neutral." style="max-width:400px; display:block; margin: 20px auto;">
+    <p>Analyze the sentiment of news headlines and search trends.</p>
+<div class="nav">
+    <a href="/" class="{{ 'active' if request.path == '/' else '' }}">📊 Sentiment Table</a>
+    <a href="/wordcloud" class="{{ 'active' if request.path == '/wordcloud' else '' }}">☁️ WordCloud</a>
+    <a href="/topics" class="{{ 'active' if request.path == '/topics' else '' }}">📈 Trending Topics</a>
+</div>
+
+
+
+
+    <table>
+        <tr>
+            <th>Headline</th>
+            <th>Sentiment</th>
+        </tr>
+        {% for headline, sentiment in headlines %}
+        <tr>
+            <td>{{ headline }}</td>
+            <td>{{ sentiment }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
