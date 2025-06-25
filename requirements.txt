@@ -2,6 +2,6 @@ flask
 requests
 beautifulsoup4
 nltk
-lxml
 wordcloud
 matplotlib
+scikit-learn
